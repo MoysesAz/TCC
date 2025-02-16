@@ -3,8 +3,8 @@
 void wifiConnect() {
   const char *loginWifiAzHouse = "Az_house";
   const char *passwordAzHouse = "89204133";
-  const char *loginWifiJudas = "Judas";
-  const char *passwordJudas = "carolina123";
+  const char *loginWifiCarolinaHouse = "Stella_2G";
+  const char *passwordCarolinaHouse = "19031946";
 
   WiFi.mode(WIFI_STA);
 
@@ -21,7 +21,7 @@ void wifiConnect() {
   }
 
   if (WiFi.status() != WL_CONNECTED) {
-    WiFi.begin(loginWifiJudas, passwordJudas);
+    WiFi.begin(loginWifiCarolinaHouse, passwordCarolinaHouse);
     startTime = millis();
     
     while (WiFi.status() != WL_CONNECTED) {

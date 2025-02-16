@@ -7,8 +7,20 @@ TelegramBrain::TelegramBrain(const char* token, const char* chatId)
 }
 
 void TelegramBrain::sendMessage(String message) {
-  bot.sendMessage(chatId, message);
+  // Adiciona uma borda simples para embelezar a mensagem
+  String border = "------------------------------------\n";
+  String msg = border + "📩 Enviando mensagem...\n\n";
+  msg += message + "\n\n";
+  msg += "✅ Mensagem enviada com sucesso!";
+  msg += "\n" + border;
+  
+  // Envia a mensagem formatada
+  bot.sendMessage(chatId, msg);
+
+  // Log no serial para verificação
+  Serial.println("Mensagem enviada: " + msg);
 }
+
 
 void TelegramBrain::sendPhoto(camera_fb_t* fb) {
   const char* myDomain = "api.telegram.org";
@@ -46,10 +58,17 @@ void TelegramBrain::sendPhoto(camera_fb_t* fb) {
     Serial.println("Mensagem enviada: ");
   }
 }
+
 void TelegramBrain::setupTelegram(String version, String espName) {
-  String msg = version + " - " + espName + "- Ativo";
+  String msg = "🚀 **Sistema Ativado!**\n\n";
+  msg += "🔧 **Versão:** " + version + "\n";
+  msg += "📡 **Nome ESP:** " + espName + "\n";
+  msg += "✅ **Status:** Ativo\n\n";
+  msg += "Tudo pronto para operar! 🚀";
+
   sendMessage(msg);
   Serial.println("Mensagem enviada: " + msg);
 }
+
 
 
